@@ -9,55 +9,51 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class CalculatorGUI extends JFrame {
+public class Calculator extends JFrame {
+  ResultPanel resultPanel;
   JLabel resultLabel;
+  JPanel numberPanel;
   static final int WIDTH = 600;
   static final int HEIGHT = 600;
 
-  CalculatorGUI() {
+  Calculator() {
     setTitle("電卓");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
-    setSize(CalculatorGUI.WIDTH, CalculatorGUI.HEIGHT);
+    setSize(Calculator.WIDTH, Calculator.HEIGHT);
     setLayout(new FlowLayout());
 
     Container contentPane = getContentPane();
 
-    JPanel resultPanel = new JPanel();
-    resultPanel.setPreferredSize(new Dimension(300, 30));
-    resultPanel.setBackground(Color.WHITE);
-
-    resultLabel = new JLabel("結果");
-    resultLabel.setText("0");
-
-    resultPanel.add(resultLabel);
-
+    resultPanel = new ResultPanel();
     contentPane.add(resultPanel);
 
-    JPanel operandPanel = new JPanel();
-    operandPanel.setPreferredSize(new Dimension(300, 200));
-    operandPanel.setBackground(Color.WHITE);
+    resultLabel = resultPanel.getResultLabel();
+
+    numberPanel = new JPanel();
+    numberPanel.setPreferredSize(new Dimension(300, 200));
+    numberPanel.setBackground(Color.WHITE);
 
     for (int i = 0; i <= 9; i++) {
       JButton btn = new JButton(String.valueOf(i));
       btn.addActionListener(new NumberListener(resultLabel));
 
-      operandPanel.add(btn);
+      numberPanel.add(btn);
     }
 
     JButton btn00 = new JButton("00");
     btn00.addActionListener(new NumberListener(resultLabel));
-    operandPanel.add(btn00);
+    numberPanel.add(btn00);
 
     JButton btnDot = new JButton(".");
     btnDot.addActionListener(new NumberListener(resultLabel));
-    operandPanel.add(btnDot);
+    numberPanel.add(btnDot);
 
-    contentPane.add(operandPanel);
+    contentPane.add(numberPanel);
   }
 
   public static void main(String[] args) {
-    CalculatorGUI frame = new CalculatorGUI();
+    Calculator frame = new Calculator();
     frame.setVisible(true);
   }
 }
