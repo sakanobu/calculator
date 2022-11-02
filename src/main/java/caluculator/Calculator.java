@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class Calculator extends JFrame {
   ResultPanel resultPanel;
   JLabel resultLabel;
-  JPanel numberPanel;
+  NumberPanel numberPanel;
   static final int WIDTH = 600;
   static final int HEIGHT = 600;
 
@@ -30,25 +30,7 @@ public class Calculator extends JFrame {
 
     resultLabel = resultPanel.getResultLabel();
 
-    numberPanel = new JPanel();
-    numberPanel.setPreferredSize(new Dimension(300, 200));
-    numberPanel.setBackground(Color.WHITE);
-
-    for (int i = 0; i <= 9; i++) {
-      JButton btn = new JButton(String.valueOf(i));
-      btn.addActionListener(new NumberListener(resultLabel));
-
-      numberPanel.add(btn);
-    }
-
-    JButton btn00 = new JButton("00");
-    btn00.addActionListener(new NumberListener(resultLabel));
-    numberPanel.add(btn00);
-
-    JButton btnDot = new JButton(".");
-    btnDot.addActionListener(new NumberListener(resultLabel));
-    numberPanel.add(btnDot);
-
+    numberPanel = new NumberPanel(resultLabel);
     contentPane.add(numberPanel);
   }
 
