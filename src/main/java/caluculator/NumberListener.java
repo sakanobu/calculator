@@ -11,6 +11,7 @@ public class NumberListener implements ActionListener {
     this.resultLabel = resultLabel;
   }
 
+  @Override
   public void actionPerformed(ActionEvent e) {
     String displayNumber = resultLabel.getText();
     String cmdName = e.getActionCommand();
