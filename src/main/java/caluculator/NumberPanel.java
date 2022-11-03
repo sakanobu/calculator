@@ -7,8 +7,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class NumberPanel extends JPanel {
+  JLabel resultLabel;
 
   NumberPanel(JLabel resultLabel) {
+    this.resultLabel = resultLabel;
+
     int width = 300;
     int height = 300;
     setPreferredSize(new Dimension(width, height));
