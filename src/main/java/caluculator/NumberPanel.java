@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 public class NumberPanel extends JPanel {
 
   NumberPanel(JLabel resultLabel) {
-    setPreferredSize(new Dimension(300, 200));
+    int width = 300;
+    int height = 300;
+    setPreferredSize(new Dimension(width, height));
     setBackground(Color.WHITE);
 
     for (int i = 0; i <= 9; i++) {

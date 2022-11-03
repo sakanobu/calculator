@@ -16,7 +16,9 @@ public class Calculator extends JFrame {
     setTitle("電卓");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
-    setSize(Calculator.WIDTH, Calculator.HEIGHT);
+    int width = 600;
+    int height = 600;
+    setSize(width, height);
     setLayout(new FlowLayout());
 
     Container contentPane = getContentPane();

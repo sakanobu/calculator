@@ -9,7 +9,9 @@ public class ResultPanel extends JPanel {
   JLabel resultLabel;
 
   ResultPanel() {
-    setPreferredSize(new Dimension(300, 30));
+    int width = 300;
+    int height = 30;
+    setPreferredSize(new Dimension(width, height));
     setBackground(Color.WHITE);
 
     resultLabel = new JLabel("0");
