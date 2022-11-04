@@ -9,8 +9,7 @@ public class Calculator extends JFrame {
   ResultPanel resultPanel;
   JLabel resultLabel;
   NumberPanel numberPanel;
-  static final int WIDTH = 600;
-  static final int HEIGHT = 600;
+  SignPanel signPanel;
 
   Calculator() {
     setTitle("電卓");
@@ -30,6 +29,9 @@ public class Calculator extends JFrame {
 
     numberPanel = new NumberPanel(resultLabel);
     contentPane.add(numberPanel);
+
+    signPanel = new SignPanel(resultLabel);
+    contentPane.add(signPanel);
   }
 
   public static void main(String[] args) {
