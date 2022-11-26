@@ -17,6 +17,9 @@ public class SignListener implements ActionListener {
     String cmdName = e.getActionCommand();
 
     switch (cmdName) {
+      case "C":
+        resultLabel.setText("0");
+        break;
       case "→":
         // ToDo -0, -0. のケースを後ほど追加
         if (displayNumber.equals("0.")) {
@@ -26,10 +29,6 @@ public class SignListener implements ActionListener {
           resultLabel.setText(displayNumber.substring(0, displayNumber.length() - 1));
           break;
         }
-    }
-
-    if (cmdName.equals("C")) {
-      resultLabel.setText("0");
     }
   }
 }
