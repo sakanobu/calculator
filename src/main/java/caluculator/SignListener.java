@@ -29,6 +29,8 @@ public class SignListener implements ActionListener {
           resultLabel.setText(displayNumber.substring(0, displayNumber.length() - 1));
           break;
         }
+      default:
+        resultLabel.setText("予期していない入力です");
     }
   }
 }
