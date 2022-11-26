@@ -17,6 +17,10 @@ public class SignPanel extends JPanel {
     setPreferredSize(new Dimension(width, height));
     setBackground(Color.WHITE);
 
+    JButton deleteBtn = new JButton("→");
+    deleteBtn.addActionListener(new SignListener(resultLabel));
+    add(deleteBtn);
+
     JButton clearBtn = new JButton("C");
     clearBtn.addActionListener(new SignListener(resultLabel));
     add(clearBtn);

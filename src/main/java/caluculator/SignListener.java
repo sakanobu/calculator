@@ -13,7 +13,20 @@ public class SignListener implements ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent e) {
+    String displayNumber = resultLabel.getText();
     String cmdName = e.getActionCommand();
+
+    switch (cmdName) {
+      case "→":
+        // ToDo -0, -0. のケースを後ほど追加
+        if (displayNumber.equals("0.")) {
+          resultLabel.setText("0");
+          break;
+        } else {
+          resultLabel.setText(displayNumber.substring(0, displayNumber.length() - 1));
+          break;
+        }
+    }
 
     if (cmdName.equals("C")) {
       resultLabel.setText("0");
