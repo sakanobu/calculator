@@ -3,11 +3,9 @@ package caluculator;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 public class Calculator extends JFrame {
   ResultPanel resultPanel;
-  JLabel resultLabel;
   NumberPanel numberPanel;
   SignPanel signPanel;
 
@@ -25,12 +23,10 @@ public class Calculator extends JFrame {
     resultPanel = new ResultPanel();
     contentPane.add(resultPanel);
 
-    resultLabel = resultPanel.getResultLabel();
-
-    numberPanel = new NumberPanel(resultLabel);
+    numberPanel = new NumberPanel(resultPanel);
     contentPane.add(numberPanel);
 
-    signPanel = new SignPanel(resultLabel);
+    signPanel = new SignPanel(resultPanel);
     contentPane.add(signPanel);
   }
 

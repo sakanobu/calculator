@@ -5,10 +5,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 
 public class NumberListener implements ActionListener {
+  ResultPanel resultPanel;
   JLabel resultLabel;
 
-  NumberListener(JLabel resultLabel) {
-    this.resultLabel = resultLabel;
+  NumberListener(ResultPanel resultPanel) {
+    this.resultPanel = resultPanel;
+    this.resultLabel = resultPanel.getResultLabel();
   }
 
   @Override

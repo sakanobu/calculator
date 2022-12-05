@@ -5,10 +5,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 
 public class SignListener implements ActionListener {
+  ResultPanel resultPanel;
   JLabel resultLabel;
 
-  SignListener(JLabel resultLabel) {
-    this.resultLabel = resultLabel;
+  SignListener(ResultPanel resultPanel) {
+    this.resultPanel = resultPanel;
+    this.resultLabel = resultPanel.getResultLabel();
   }
 
   @Override
@@ -29,6 +31,9 @@ public class SignListener implements ActionListener {
           resultLabel.setText(displayNumber.substring(0, displayNumber.length() - 1));
           break;
         }
+      case "+":
+        // this.beforeNumber = displayNumber;
+        break;
       default:
         resultLabel.setText("予期していない入力です");
     }

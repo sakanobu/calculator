@@ -3,14 +3,13 @@ package caluculator;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class SignPanel extends JPanel {
-  JLabel resultLabel;
+  ResultPanel resultPanel;
 
-  SignPanel(JLabel resultLabel) {
-    this.resultLabel = resultLabel;
+  SignPanel(ResultPanel resultPanel) {
+    this.resultPanel = resultPanel;
 
     int width = 600;
     int height = 600;
@@ -18,11 +17,15 @@ public class SignPanel extends JPanel {
     setBackground(Color.WHITE);
 
     JButton deleteBtn = new JButton("→");
-    deleteBtn.addActionListener(new SignListener(resultLabel));
+    deleteBtn.addActionListener(new SignListener(resultPanel));
     add(deleteBtn);
 
     JButton clearBtn = new JButton("C");
-    clearBtn.addActionListener(new SignListener(resultLabel));
+    clearBtn.addActionListener(new SignListener(resultPanel));
     add(clearBtn);
+
+    JButton plusBtn = new JButton("+");
+    clearBtn.addActionListener(new SignListener(resultPanel));
+    add(plusBtn);
   }
 }
