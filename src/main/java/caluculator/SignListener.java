@@ -32,7 +32,9 @@ public class SignListener implements ActionListener {
           break;
         }
       case "+":
-        // this.beforeNumber = displayNumber;
+        resultPanel.setBeforeNumber(displayNumber);
+        resultPanel.setPushedOperator("+");
+        resultPanel.setOperatorButtonPushed(true);
         break;
       default:
         resultLabel.setText("予期していない入力です");

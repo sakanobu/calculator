@@ -18,13 +18,12 @@ public class NumberListener implements ActionListener {
     String displayNumber = resultLabel.getText();
     String cmdName = e.getActionCommand();
 
-    if (displayNumber.contains(".") && cmdName.equals(".")) {
-      return;
-    }
-
     switch (cmdName) {
       case ".":
-        if (displayNumber.contains(".")) {
+        if (resultPanel.isOperatorButtonPushed()) {
+          resultPanel.setOperatorButtonPushed(false);
+          resultLabel.setText("0.");
+        } else if (displayNumber.contains(".")) {
           return;
         } else if (displayNumber.equals("0")) {
           resultLabel.setText("0.");
@@ -33,14 +32,20 @@ public class NumberListener implements ActionListener {
         }
         break;
       case "00":
-        if (displayNumber.equals("0")) {
+        if (resultPanel.isOperatorButtonPushed()) {
+          resultPanel.setOperatorButtonPushed(false);
+          resultLabel.setText("0");
+        } else if (displayNumber.equals("0")) {
           resultLabel.setText("0");
         } else {
           resultLabel.setText(displayNumber + "00");
         }
         break;
       default:
-        if (displayNumber.equals("0")) {
+        if (resultPanel.isOperatorButtonPushed()) {
+          resultPanel.setOperatorButtonPushed(false);
+          resultLabel.setText(cmdName);
+        } else if (displayNumber.equals("0")) {
           resultLabel.setText(cmdName);
         } else {
           resultLabel.setText(displayNumber + cmdName);
