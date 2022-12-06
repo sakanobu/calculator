@@ -36,6 +36,17 @@ public class SignListener implements ActionListener {
         resultPanel.setPushedOperator("+");
         resultPanel.setOperatorButtonPushed(true);
         break;
+      case "=":
+        switch (resultPanel.getPushedOperator()) {
+          case "+":
+            double result =
+                Double.parseDouble(resultPanel.getBeforeNumber())
+                    + Double.parseDouble(displayNumber);
+            resultLabel.setText(String.valueOf(result));
+            break;
+        }
+        resultPanel.setPushedOperator("");
+        break;
       default:
         resultLabel.setText("予期していない入力です");
     }

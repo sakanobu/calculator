@@ -27,5 +27,9 @@ public class SignPanel extends JPanel {
     JButton plusBtn = new JButton("+");
     plusBtn.addActionListener(new SignListener(resultPanel));
     add(plusBtn);
+
+    JButton equalBtn = new JButton("=");
+    equalBtn.addActionListener(new SignListener(resultPanel));
+    add(equalBtn);
   }
 }
