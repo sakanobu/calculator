@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 public class ResultPanel extends JPanel {
   JLabel resultLabel;
   String beforeNumber;
+  boolean pushedOperator;
 
   ResultPanel() {
     int width = 300;
@@ -17,6 +18,7 @@ public class ResultPanel extends JPanel {
 
     resultLabel = new JLabel("0");
     this.beforeNumber = "";
+    this.pushedOperator = false;
 
     add(resultLabel);
   }
@@ -31,5 +33,13 @@ public class ResultPanel extends JPanel {
 
   public void setBeforeNumber(String beforeNumber) {
     this.beforeNumber = beforeNumber;
+  }
+
+  public boolean isPushedOperator() {
+    return pushedOperator;
+  }
+
+  public void setPushedOperator(boolean pushedOperator) {
+    this.pushedOperator = pushedOperator;
   }
 }
