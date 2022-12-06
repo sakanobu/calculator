@@ -18,7 +18,8 @@ public class ResultPanel extends JPanel {
 
     resultLabel = new JLabel("0");
     this.beforeNumber = "";
-    this.pushedOperator = false;
+    this.pushedOperator = "";
+    this.operatorButtonPushed = false;
 
     add(resultLabel);
   }
@@ -35,11 +36,11 @@ public class ResultPanel extends JPanel {
     this.beforeNumber = beforeNumber;
   }
 
-  public boolean isPushedOperator() {
+  public String getPushedOperator() {
     return pushedOperator;
   }
 
-  public void setPushedOperator(boolean pushedOperator) {
+  public void setPushedOperator(String pushedOperator) {
     this.pushedOperator = pushedOperator;
   }
 }
