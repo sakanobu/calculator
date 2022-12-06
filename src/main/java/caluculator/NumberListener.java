@@ -22,20 +22,29 @@ public class NumberListener implements ActionListener {
       return;
     }
 
-    if (displayNumber.equals("0") && cmdName.equals(".")) {
-      resultLabel.setText("0.");
-      return;
-    }
-
-    if (displayNumber.equals("0") && cmdName.equals("00")) {
-      resultLabel.setText("0");
-      return;
-    }
-
-    if (displayNumber.equals("0")) {
-      resultLabel.setText(cmdName);
-    } else {
-      resultLabel.setText(displayNumber + cmdName);
+    switch (cmdName) {
+      case ".":
+        if (displayNumber.contains(".")) {
+          return;
+        } else if (displayNumber.equals("0")) {
+          resultLabel.setText("0.");
+        } else {
+          resultLabel.setText(displayNumber + ".");
+        }
+        break;
+      case "00":
+        if (displayNumber.equals("0")) {
+          resultLabel.setText("0");
+        } else {
+          resultLabel.setText(displayNumber + "00");
+        }
+        break;
+      default:
+        if (displayNumber.equals("0")) {
+          resultLabel.setText(cmdName);
+        } else {
+          resultLabel.setText(displayNumber + cmdName);
+        }
     }
   }
 }
