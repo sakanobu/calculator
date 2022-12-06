@@ -8,7 +8,10 @@ import javax.swing.JPanel;
 public class ResultPanel extends JPanel {
   JLabel resultLabel;
   String beforeNumber;
-  boolean pushedOperator;
+  // どの演算子が選択されているのかを知っているのは SignPanel では？
+  String pushedOperator;
+  // OperatorButton が pushed なのかどうかを知っているのは、ResultPanel ではなく SignPanel なのでは？
+  boolean operatorButtonPushed;
 
   ResultPanel() {
     int width = 300;
@@ -42,5 +45,13 @@ public class ResultPanel extends JPanel {
 
   public void setPushedOperator(String pushedOperator) {
     this.pushedOperator = pushedOperator;
+  }
+
+  public boolean isOperatorButtonPushed() {
+    return this.operatorButtonPushed;
+  }
+
+  public void setOperatorButtonPushed(boolean operatorButtonPushed) {
+    this.operatorButtonPushed = operatorButtonPushed;
   }
 }
