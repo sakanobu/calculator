@@ -28,6 +28,10 @@ public class SignPanel extends JPanel {
     plusBtn.addActionListener(new SignListener(resultPanel));
     add(plusBtn);
 
+    JButton minusBtn = new JButton("-");
+    minusBtn.addActionListener(new SignListener(resultPanel));
+    add(minusBtn);
+
     JButton equalBtn = new JButton("=");
     equalBtn.addActionListener(new SignListener(resultPanel));
     add(equalBtn);
