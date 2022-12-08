@@ -46,6 +46,11 @@ public class SignListener implements ActionListener {
         resultPanel.setPushedOperator("×");
         resultPanel.setOperatorButtonPushed(true);
         break;
+      case "÷":
+        resultPanel.setBeforeNumber(displayNumber);
+        resultPanel.setPushedOperator("÷");
+        resultPanel.setOperatorButtonPushed(true);
+        break;
       case "=":
         switch (resultPanel.getPushedOperator()) {
           case "+":
@@ -67,6 +72,13 @@ public class SignListener implements ActionListener {
                 Double.parseDouble(resultPanel.getBeforeNumber())
                     * Double.parseDouble(displayNumber);
             resultLabel.setText(String.valueOf(multiplyResult));
+            resultPanel.setPushedOperator("");
+            break;
+          case "÷":
+            double divideResult =
+                Double.parseDouble(resultPanel.getBeforeNumber())
+                    / Double.parseDouble(displayNumber);
+            resultLabel.setText(String.valueOf(divideResult));
             resultPanel.setPushedOperator("");
             break;
           default:
