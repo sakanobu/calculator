@@ -62,7 +62,7 @@ public class SignListener implements ActionListener {
         }
         break;
       default:
-        resultLabel.setText("予期していない入力です");
+        resultLabel.setText("SignListenerのswitch文でdefault節まで到達しました。");
     }
   }
 }
