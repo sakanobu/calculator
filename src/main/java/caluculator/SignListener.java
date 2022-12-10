@@ -48,6 +48,14 @@ public class SignListener implements ActionListener {
           resultLabel.setText(percentResult.toPlainString());
           break;
         }
+      case "±":
+        if (displayNumber.matches("^-.*")) {
+          resultLabel.setText(displayNumber.substring(1));
+          break;
+        } else {
+          resultLabel.setText("-" + displayNumber);
+          break;
+        }
       case "+":
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setPushedOperator("+");

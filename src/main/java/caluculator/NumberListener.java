@@ -45,6 +45,8 @@ public class NumberListener implements ActionListener {
         if (resultPanel.isOperatorButtonPushed()) {
           resultPanel.setOperatorButtonPushed(false);
           resultLabel.setText(cmdName);
+        } else if (displayNumber.equals("-0")) {
+          resultLabel.setText("-" + cmdName);
         } else if (displayNumber.equals("0")) {
           resultLabel.setText(cmdName);
         } else {

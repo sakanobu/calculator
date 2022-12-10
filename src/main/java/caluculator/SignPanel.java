@@ -28,6 +28,10 @@ public class SignPanel extends JPanel {
     percentBtn.addActionListener(new SignListener(resultPanel));
     add(percentBtn);
 
+    JButton reverseNumberSignBtn = new JButton("±");
+    reverseNumberSignBtn.addActionListener(new SignListener(resultPanel));
+    add(reverseNumberSignBtn);
+
     JButton plusBtn = new JButton("+");
     plusBtn.addActionListener(new SignListener(resultPanel));
     add(plusBtn);
