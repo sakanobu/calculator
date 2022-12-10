@@ -36,12 +36,13 @@ public class SignListener implements ActionListener {
         }
       case "%":
         // ToDo 3回くらい繰り返すと誤差が生じてしまう
-        if (Double.parseDouble(displayNumber) == 0) {
+        if (new BigDecimal(displayNumber).compareTo(BigDecimal.ZERO) == 0) {
           resultLabel.setText("0");
           break;
         } else {
-          double percentResult = Double.parseDouble(displayNumber) / 100;
-          resultLabel.setText(BigDecimal.valueOf(percentResult).toPlainString());
+          BigDecimal percentResult = new BigDecimal(displayNumber).scaleByPowerOfTen(-2);
+          //          double percentResult = Double.parseDouble(displayNumber) / 100;
+          resultLabel.setText(percentResult.toPlainString());
           break;
         }
       case "+":
