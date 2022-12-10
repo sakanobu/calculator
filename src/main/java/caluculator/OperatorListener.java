@@ -92,4 +92,36 @@ public class OperatorListener implements ActionListener {
         resultLabel.setText("OperatorListenerのswitch文でdefault節まで到達しました。");
     }
   }
+
+  String calculate() {
+    String displayNumber = resultLabel.getText();
+    BigDecimal bigDecimalResult = BigDecimal.ZERO;
+
+    switch (resultPanel.getPushedOperator()) {
+      case "+":
+        bigDecimalResult =
+            new BigDecimal(resultPanel.getBeforeNumber()).add(new BigDecimal(displayNumber));
+        break;
+      case "-":
+        bigDecimalResult =
+            new BigDecimal(resultPanel.getBeforeNumber()).subtract(new BigDecimal(displayNumber));
+        break;
+      case "×":
+        bigDecimalResult =
+            new BigDecimal(resultPanel.getBeforeNumber()).multiply(new BigDecimal(displayNumber));
+        break;
+      case "÷":
+        bigDecimalResult =
+            new BigDecimal(resultPanel.getBeforeNumber()).divide(new BigDecimal(displayNumber), 30,
+                RoundingMode.HALF_UP);
+        break;
+      case "":
+        resultLabel.setText("pushedOperatorが空文字列にもかかわらずcalculateメソッドが呼ばれました。");
+        break;
+      default:
+        resultLabel.setText("OperatorListenerのswitch文③でdefault節まで到達しました。");
+    }
+
+    return bigDecimalResult.stripTrailingZeros().toPlainString();
+  }
 }
