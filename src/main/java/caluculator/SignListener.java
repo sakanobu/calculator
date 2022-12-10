@@ -25,6 +25,8 @@ public class SignListener implements ActionListener {
     switch (cmdName) {
       case "C":
         resultLabel.setText("0");
+        resultPanel.setPushedOperator("");
+        pushedOperatorLabel.setText("");
         break;
       case "→":
         // ToDo -0, -0. のケースを後ほど追加
