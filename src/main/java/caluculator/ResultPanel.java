@@ -15,6 +15,7 @@ public class ResultPanel extends JPanel {
   boolean operatorButtonPushed;
 
   ResultPanel() {
+    setLayout(null);
     int width = 300;
     int height = 30;
     setPreferredSize(new Dimension(width, height));
@@ -26,7 +27,9 @@ public class ResultPanel extends JPanel {
     this.pushedOperator = "";
     this.operatorButtonPushed = false;
 
+    resultLabel.setBounds(10, 0, 260, 30);
     add(resultLabel);
+    pushedOperatorLabel.setBounds(280, 0, 20, 30);
     add(pushedOperatorLabel);
   }
 
