@@ -32,30 +32,25 @@ public class SignListener implements ActionListener {
         // ToDo -0, -0. のケースを後ほど追加
         if (displayNumber.equals("0.")) {
           resultLabel.setText("0");
-          break;
         } else {
           resultLabel.setText(displayNumber.substring(0, displayNumber.length() - 1));
-          break;
         }
+        break;
       case "%":
-        // ToDo 3回くらい繰り返すと誤差が生じてしまう
         if (new BigDecimal(displayNumber).compareTo(BigDecimal.ZERO) == 0) {
           resultLabel.setText("0");
-          break;
         } else {
           BigDecimal percentResult = new BigDecimal(displayNumber).scaleByPowerOfTen(-2);
-          //          double percentResult = Double.parseDouble(displayNumber) / 100;
           resultLabel.setText(percentResult.toPlainString());
-          break;
         }
+        break;
       case "±":
         if (displayNumber.matches("^-.*")) {
           resultLabel.setText(displayNumber.substring(1));
-          break;
         } else {
           resultLabel.setText("-" + displayNumber);
-          break;
         }
+        break;
       case "+":
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setPushedOperator("+");
