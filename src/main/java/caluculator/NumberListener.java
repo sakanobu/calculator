@@ -24,8 +24,6 @@ public class NumberListener implements ActionListener {
           resultLabel.setText("0.");
         } else if (displayNumber.contains(".")) {
           return;
-        } else if (displayNumber.equals("0")) {
-          resultLabel.setText("0.");
         } else {
           resultLabel.setText(displayNumber + ".");
         }
