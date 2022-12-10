@@ -104,6 +104,9 @@ public class SignListener implements ActionListener {
             resultPanel.setPushedOperator("");
             pushedOperatorLabel.setText("");
             break;
+          case "":
+            resultLabel.setText(displayNumber);
+            break;
           default:
             resultLabel.setText("演算子のswitch文でdefault節まで到達しました。");
         }
