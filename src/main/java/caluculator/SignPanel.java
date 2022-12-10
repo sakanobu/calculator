@@ -31,25 +31,5 @@ public class SignPanel extends JPanel {
     JButton reverseNumberSignBtn = new JButton("±");
     reverseNumberSignBtn.addActionListener(new SignListener(resultPanel));
     add(reverseNumberSignBtn);
-
-    JButton plusBtn = new JButton("+");
-    plusBtn.addActionListener(new SignListener(resultPanel));
-    add(plusBtn);
-
-    JButton minusBtn = new JButton("-");
-    minusBtn.addActionListener(new SignListener(resultPanel));
-    add(minusBtn);
-
-    JButton multiplyBtn = new JButton("×");
-    multiplyBtn.addActionListener(new SignListener(resultPanel));
-    add(multiplyBtn);
-
-    JButton divideBtn = new JButton("÷");
-    divideBtn.addActionListener(new SignListener(resultPanel));
-    add(divideBtn);
-
-    JButton equalBtn = new JButton("=");
-    equalBtn.addActionListener(new SignListener(resultPanel));
-    add(equalBtn);
   }
 }

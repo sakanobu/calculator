@@ -8,6 +8,7 @@ public class Calculator extends JFrame {
   ResultPanel resultPanel;
   NumberPanel numberPanel;
   SignPanel signPanel;
+  OperatorPanel operatorPanel;
 
   Calculator() {
     setTitle("電卓");
@@ -28,6 +29,9 @@ public class Calculator extends JFrame {
 
     signPanel = new SignPanel(resultPanel);
     contentPane.add(signPanel);
+
+    operatorPanel = new OperatorPanel(resultPanel);
+    contentPane.add(operatorPanel);
   }
 
   public static void main(String[] args) {
