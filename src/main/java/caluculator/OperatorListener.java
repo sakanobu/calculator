@@ -26,25 +26,25 @@ public class OperatorListener implements ActionListener {
       case "+":
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setPushedOperator("+");
-        resultPanel.setOperatorButtonPushed(true);
+        resultPanel.setLastOperationByOperatorPushed(true);
         pushedOperatorLabel.setText(resultPanel.getPushedOperator());
         break;
       case "-":
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setPushedOperator("-");
-        resultPanel.setOperatorButtonPushed(true);
+        resultPanel.setLastOperationByOperatorPushed(true);
         pushedOperatorLabel.setText(resultPanel.getPushedOperator());
         break;
       case "×":
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setPushedOperator("×");
-        resultPanel.setOperatorButtonPushed(true);
+        resultPanel.setLastOperationByOperatorPushed(true);
         pushedOperatorLabel.setText(resultPanel.getPushedOperator());
         break;
       case "÷":
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setPushedOperator("÷");
-        resultPanel.setOperatorButtonPushed(true);
+        resultPanel.setLastOperationByOperatorPushed(true);
         pushedOperatorLabel.setText(resultPanel.getPushedOperator());
         break;
       case "=":

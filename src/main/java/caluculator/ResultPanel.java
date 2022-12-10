@@ -12,7 +12,7 @@ public class ResultPanel extends JPanel {
   // どの演算子が選択されているのかを知っているのは SignPanel では？
   String pushedOperator;
   // OperatorButton が pushed なのかどうかを知っているのは、ResultPanel ではなく SignPanel なのでは？
-  boolean operatorButtonPushed;
+  boolean lastOperationByOperatorPushed;
 
   ResultPanel() {
     setLayout(null);
@@ -25,7 +25,7 @@ public class ResultPanel extends JPanel {
     pushedOperatorLabel = new JLabel("");
     this.beforeNumber = "";
     this.pushedOperator = "";
-    this.operatorButtonPushed = false;
+    this.lastOperationByOperatorPushed = false;
 
     resultLabel.setBounds(10, 0, 260, 30);
     add(resultLabel);
@@ -57,11 +57,11 @@ public class ResultPanel extends JPanel {
     this.pushedOperator = pushedOperator;
   }
 
-  public boolean isOperatorButtonPushed() {
-    return this.operatorButtonPushed;
+  public boolean isLastOperationByOperatorPushed() {
+    return this.lastOperationByOperatorPushed;
   }
 
-  public void setOperatorButtonPushed(boolean operatorButtonPushed) {
-    this.operatorButtonPushed = operatorButtonPushed;
+  public void setLastOperationByOperatorPushed(boolean lastOperationByOperatorPushed) {
+    this.lastOperationByOperatorPushed = lastOperationByOperatorPushed;
   }
 }
