@@ -22,84 +22,26 @@ public class OperatorListener implements ActionListener {
     String displayNumber = resultLabel.getText();
     String cmdName = e.getActionCommand();
 
-    if (!resultPanel.getPushedOperator().equals("")
+    if (cmdName.equals("=") && resultPanel.isLastOperationByOperatorPushed()) {
+      resultLabel.setText(calculateWhenEqualRepushed());
+    } else if (cmdName.equals("=")) {
+      resultLabel.setText(calculate());
+      resultPanel.setBeforeNumber(displayNumber);
+      resultPanel.setLastOperationByOperatorPushed(true);
+    } else if (!resultPanel.getPushedOperator().equals("")
         && !resultPanel.isLastOperationByOperatorPushed()) {
       resultLabel.setText(calculate());
       resultPanel.setBeforeNumber(resultLabel.getText());
       resultPanel.setPushedOperator(cmdName);
       resultPanel.setLastOperationByOperatorPushed(true);
       pushedOperatorLabel.setText(resultPanel.getPushedOperator());
-      return;
-    }
-
-    switch (cmdName) {
-      case "+":
-        resultPanel.setBeforeNumber(displayNumber);
-        resultPanel.setPushedOperator("+");
-        resultPanel.setLastOperationByOperatorPushed(true);
-        pushedOperatorLabel.setText(resultPanel.getPushedOperator());
-        break;
-      case "-":
-        resultPanel.setBeforeNumber(displayNumber);
-        resultPanel.setPushedOperator("-");
-        resultPanel.setLastOperationByOperatorPushed(true);
-        pushedOperatorLabel.setText(resultPanel.getPushedOperator());
-        break;
-      case "×":
-        resultPanel.setBeforeNumber(displayNumber);
-        resultPanel.setPushedOperator("×");
-        resultPanel.setLastOperationByOperatorPushed(true);
-        pushedOperatorLabel.setText(resultPanel.getPushedOperator());
-        break;
-      case "÷":
-        resultPanel.setBeforeNumber(displayNumber);
-        resultPanel.setPushedOperator("÷");
-        resultPanel.setLastOperationByOperatorPushed(true);
-        pushedOperatorLabel.setText(resultPanel.getPushedOperator());
-        break;
-      case "=":
-        switch (resultPanel.getPushedOperator()) {
-          case "+":
-            BigDecimal plusResult =
-                new BigDecimal(resultPanel.getBeforeNumber()).add(new BigDecimal(
-                    displayNumber));
-            resultLabel.setText(plusResult.stripTrailingZeros().toPlainString());
-            resultPanel.setPushedOperator("");
-            pushedOperatorLabel.setText("");
-            break;
-          case "-":
-            BigDecimal minusResult =
-                new BigDecimal(resultPanel.getBeforeNumber()).subtract(new BigDecimal(
-                    displayNumber));
-            resultLabel.setText(minusResult.stripTrailingZeros().toPlainString());
-            resultPanel.setPushedOperator("");
-            pushedOperatorLabel.setText("");
-            break;
-          case "×":
-            BigDecimal multiplyResult =
-                new BigDecimal(resultPanel.getBeforeNumber()).multiply(new BigDecimal(
-                    displayNumber));
-            resultLabel.setText(multiplyResult.stripTrailingZeros().toPlainString());
-            resultPanel.setPushedOperator("");
-            pushedOperatorLabel.setText("");
-            break;
-          case "÷":
-            BigDecimal divideResult =
-                new BigDecimal(resultPanel.getBeforeNumber()).divide(new BigDecimal(
-                    displayNumber), 30, RoundingMode.HALF_UP);
-            resultLabel.setText(divideResult.stripTrailingZeros().toPlainString());
-            resultPanel.setPushedOperator("");
-            pushedOperatorLabel.setText("");
-            break;
-          case "":
-            resultLabel.setText(displayNumber);
-            break;
-          default:
-            resultLabel.setText("演算子のswitch文②でdefault節まで到達しました。");
-        }
-        break;
-      default:
-        resultLabel.setText("OperatorListenerのswitch文③でdefault節まで到達しました。");
+    } else if (cmdName.matches("[+-×÷]")) {
+      resultPanel.setBeforeNumber(displayNumber);
+      resultPanel.setPushedOperator(cmdName);
+      resultPanel.setLastOperationByOperatorPushed(true);
+      pushedOperatorLabel.setText(resultPanel.getPushedOperator());
+    } else {
+      resultLabel.setText("到達するはずのない条件節まで来ています。");
     }
   }
 
@@ -123,6 +65,35 @@ public class OperatorListener implements ActionListener {
       case "÷":
         bigDecimalResult =
             new BigDecimal(resultPanel.getBeforeNumber()).divide(new BigDecimal(displayNumber), 30,
+                RoundingMode.HALF_UP);
+        break;
+      default:
+        resultLabel.setText("OperatorListenerのswitch文③でdefault節まで到達しました。");
+    }
+
+    return bigDecimalResult.stripTrailingZeros().toPlainString();
+  }
+
+  String calculateWhenEqualRepushed() {
+    String displayNumber = resultLabel.getText();
+    BigDecimal bigDecimalResult = BigDecimal.ZERO;
+
+    switch (resultPanel.getPushedOperator()) {
+      case "+":
+        bigDecimalResult =
+            new BigDecimal(resultPanel.getBeforeNumber()).add(new BigDecimal(displayNumber));
+        break;
+      case "-":
+        bigDecimalResult =
+            new BigDecimal(displayNumber).subtract(new BigDecimal(resultPanel.getBeforeNumber()));
+        break;
+      case "×":
+        bigDecimalResult =
+            new BigDecimal(resultPanel.getBeforeNumber()).multiply(new BigDecimal(displayNumber));
+        break;
+      case "÷":
+        bigDecimalResult =
+            new BigDecimal(displayNumber).divide(new BigDecimal(resultPanel.getBeforeNumber()), 30,
                 RoundingMode.HALF_UP);
         break;
       case "":
