@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 public class ResultPanel extends JPanel {
   JLabel resultLabel;
+  JLabel pushedOperatorLabel;
   String beforeNumber;
   // どの演算子が選択されているのかを知っているのは SignPanel では？
   String pushedOperator;
@@ -20,15 +21,21 @@ public class ResultPanel extends JPanel {
     setBackground(Color.WHITE);
 
     resultLabel = new JLabel("0");
+    pushedOperatorLabel = new JLabel("");
     this.beforeNumber = "";
     this.pushedOperator = "";
     this.operatorButtonPushed = false;
 
     add(resultLabel);
+    add(pushedOperatorLabel);
   }
 
   public JLabel getResultLabel() {
     return resultLabel;
+  }
+
+  public JLabel getPushedOperatorLabel() {
+    return pushedOperatorLabel;
   }
 
   public String getBeforeNumber() {

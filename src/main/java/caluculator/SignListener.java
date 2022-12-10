@@ -7,10 +7,12 @@ import javax.swing.JLabel;
 public class SignListener implements ActionListener {
   ResultPanel resultPanel;
   JLabel resultLabel;
+  JLabel pushedOperatorLabel;
 
   SignListener(ResultPanel resultPanel) {
     this.resultPanel = resultPanel;
     this.resultLabel = resultPanel.getResultLabel();
+    this.pushedOperatorLabel = resultPanel.getPushedOperatorLabel();
   }
 
   @Override
@@ -35,21 +37,25 @@ public class SignListener implements ActionListener {
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setPushedOperator("+");
         resultPanel.setOperatorButtonPushed(true);
+        pushedOperatorLabel.setText(resultPanel.getPushedOperator());
         break;
       case "-":
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setPushedOperator("-");
         resultPanel.setOperatorButtonPushed(true);
+        pushedOperatorLabel.setText(resultPanel.getPushedOperator());
         break;
       case "×":
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setPushedOperator("×");
         resultPanel.setOperatorButtonPushed(true);
+        pushedOperatorLabel.setText(resultPanel.getPushedOperator());
         break;
       case "÷":
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setPushedOperator("÷");
         resultPanel.setOperatorButtonPushed(true);
+        pushedOperatorLabel.setText(resultPanel.getPushedOperator());
         break;
       case "=":
         switch (resultPanel.getPushedOperator()) {
@@ -59,6 +65,7 @@ public class SignListener implements ActionListener {
                     + Double.parseDouble(displayNumber);
             resultLabel.setText(String.valueOf(plusResult));
             resultPanel.setPushedOperator("");
+            pushedOperatorLabel.setText("");
             break;
           case "-":
             double minusResult =
@@ -66,6 +73,7 @@ public class SignListener implements ActionListener {
                     - Double.parseDouble(displayNumber);
             resultLabel.setText(String.valueOf(minusResult));
             resultPanel.setPushedOperator("");
+            pushedOperatorLabel.setText("");
             break;
           case "×":
             double multiplyResult =
@@ -73,6 +81,7 @@ public class SignListener implements ActionListener {
                     * Double.parseDouble(displayNumber);
             resultLabel.setText(String.valueOf(multiplyResult));
             resultPanel.setPushedOperator("");
+            pushedOperatorLabel.setText("");
             break;
           case "÷":
             double divideResult =
@@ -80,6 +89,7 @@ public class SignListener implements ActionListener {
                     / Double.parseDouble(displayNumber);
             resultLabel.setText(String.valueOf(divideResult));
             resultPanel.setPushedOperator("");
+            pushedOperatorLabel.setText("");
             break;
           default:
             resultLabel.setText("演算子のswitch文でdefault節まで到達しました。");
