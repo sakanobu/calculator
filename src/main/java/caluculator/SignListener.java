@@ -3,6 +3,7 @@ package caluculator;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import javax.swing.JLabel;
 
 public class SignListener implements ActionListener {
@@ -96,10 +97,10 @@ public class SignListener implements ActionListener {
             pushedOperatorLabel.setText("");
             break;
           case "÷":
-            double divideResult =
-                Double.parseDouble(resultPanel.getBeforeNumber())
-                    / Double.parseDouble(displayNumber);
-            resultLabel.setText(String.valueOf(divideResult));
+            BigDecimal divideResult =
+                new BigDecimal(resultPanel.getBeforeNumber()).divide(new BigDecimal(
+                    displayNumber), 30, RoundingMode.HALF_UP);
+            resultLabel.setText(divideResult.stripTrailingZeros().toPlainString());
             resultPanel.setPushedOperator("");
             pushedOperatorLabel.setText("");
             break;
