@@ -36,7 +36,7 @@ public class NumberListener implements ActionListener {
           resultPanel.setOperatorButtonPushed(false);
           resultLabel.setText("0");
         } else if (displayNumber.equals("0")) {
-          resultLabel.setText("0");
+          return;
         } else {
           resultLabel.setText(displayNumber + "00");
         }
