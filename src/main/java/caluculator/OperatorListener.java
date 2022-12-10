@@ -85,11 +85,11 @@ public class OperatorListener implements ActionListener {
             resultLabel.setText(displayNumber);
             break;
           default:
-            resultLabel.setText("演算子のswitch文でdefault節まで到達しました。");
+            resultLabel.setText("演算子のswitch文②でdefault節まで到達しました。");
         }
         break;
       default:
-        resultLabel.setText("OperatorListenerのswitch文でdefault節まで到達しました。");
+        resultLabel.setText("OperatorListenerのswitch文③でdefault節まで到達しました。");
     }
   }
 
