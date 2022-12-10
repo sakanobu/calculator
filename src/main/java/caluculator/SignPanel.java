@@ -24,6 +24,10 @@ public class SignPanel extends JPanel {
     clearBtn.addActionListener(new SignListener(resultPanel));
     add(clearBtn);
 
+    JButton percentBtn = new JButton("%");
+    percentBtn.addActionListener(new SignListener(resultPanel));
+    add(percentBtn);
+
     JButton plusBtn = new JButton("+");
     plusBtn.addActionListener(new SignListener(resultPanel));
     add(plusBtn);

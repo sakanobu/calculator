@@ -2,6 +2,7 @@ package caluculator;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import javax.swing.JLabel;
 
 public class SignListener implements ActionListener {
@@ -31,6 +32,16 @@ public class SignListener implements ActionListener {
           break;
         } else {
           resultLabel.setText(displayNumber.substring(0, displayNumber.length() - 1));
+          break;
+        }
+      case "%":
+        // ToDo 3回くらい繰り返すと誤差が生じてしまう
+        if (Double.parseDouble(displayNumber) == 0) {
+          resultLabel.setText("0");
+          break;
+        } else {
+          double percentResult = Double.parseDouble(displayNumber) / 100;
+          resultLabel.setText(BigDecimal.valueOf(percentResult).toPlainString());
           break;
         }
       case "+":
