@@ -13,8 +13,8 @@ public class Calculator extends JFrame {
     setTitle("電卓");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
-    int width = 600;
-    int height = 600;
+    int width = 400;
+    int height = 500;
     setSize(width, height);
     setLayout(new FlowLayout());
 

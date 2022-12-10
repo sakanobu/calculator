@@ -12,7 +12,7 @@ public class NumberPanel extends JPanel {
     this.resultPanel = resultPanel;
 
     int width = 300;
-    int height = 300;
+    int height = 150;
     setPreferredSize(new Dimension(width, height));
     setBackground(Color.WHITE);
 
