@@ -11,8 +11,8 @@ public class SignPanel extends JPanel {
   SignPanel(ResultPanel resultPanel) {
     this.resultPanel = resultPanel;
 
-    int width = 600;
-    int height = 600;
+    int width = 350;
+    int height = 100;
     setPreferredSize(new Dimension(width, height));
     setBackground(Color.WHITE);
 

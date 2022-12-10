@@ -16,18 +16,34 @@ public class NumberPanel extends JPanel {
     setPreferredSize(new Dimension(width, height));
     setBackground(Color.WHITE);
 
-    for (int i = 0; i <= 9; i++) {
+    for (int i = 7; i <= 9; i++) {
       JButton btn = new JButton(String.valueOf(i));
       btn.addActionListener(new NumberListener(resultPanel));
       add(btn);
     }
 
-    JButton btn00 = new JButton("00");
-    btn00.addActionListener(new NumberListener(resultPanel));
-    add(btn00);
+    for (int i = 4; i <= 6; i++) {
+      JButton btn = new JButton(String.valueOf(i));
+      btn.addActionListener(new NumberListener(resultPanel));
+      add(btn);
+    }
 
-    JButton btnDot = new JButton(".");
-    btnDot.addActionListener(new NumberListener(resultPanel));
-    add(btnDot);
+    for (int i = 1; i <= 3; i++) {
+      JButton btn = new JButton(String.valueOf(i));
+      btn.addActionListener(new NumberListener(resultPanel));
+      add(btn);
+    }
+
+    JButton singleZeroBtn = new JButton("0");
+    singleZeroBtn.addActionListener(new NumberListener(resultPanel));
+    add(singleZeroBtn);
+
+    JButton doubleZeroBtn = new JButton("00");
+    doubleZeroBtn.addActionListener(new NumberListener(resultPanel));
+    add(doubleZeroBtn);
+
+    JButton dotBtn = new JButton(".");
+    dotBtn.addActionListener(new NumberListener(resultPanel));
+    add(dotBtn);
   }
 }
