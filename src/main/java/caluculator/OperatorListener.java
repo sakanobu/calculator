@@ -22,6 +22,16 @@ public class OperatorListener implements ActionListener {
     String displayNumber = resultLabel.getText();
     String cmdName = e.getActionCommand();
 
+    if (!resultPanel.getPushedOperator().equals("")
+        && !resultPanel.isLastOperationByOperatorPushed()) {
+      resultLabel.setText(calculate());
+      resultPanel.setBeforeNumber(resultLabel.getText());
+      resultPanel.setPushedOperator(cmdName);
+      resultPanel.setLastOperationByOperatorPushed(true);
+      pushedOperatorLabel.setText(resultPanel.getPushedOperator());
+      return;
+    }
+
     switch (cmdName) {
       case "+":
         resultPanel.setBeforeNumber(displayNumber);
