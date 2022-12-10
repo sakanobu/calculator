@@ -21,7 +21,6 @@ public class NumberListener implements ActionListener {
     switch (cmdName) {
       case ".":
         if (resultPanel.isOperatorButtonPushed()) {
-          resultPanel.setOperatorButtonPushed(false);
           resultLabel.setText("0.");
         } else if (displayNumber.contains(".")) {
           return;
@@ -33,7 +32,6 @@ public class NumberListener implements ActionListener {
         break;
       case "00":
         if (resultPanel.isOperatorButtonPushed()) {
-          resultPanel.setOperatorButtonPushed(false);
           resultLabel.setText("0");
         } else if (displayNumber.equals("0")) {
           return;
@@ -43,7 +41,6 @@ public class NumberListener implements ActionListener {
         break;
       default:
         if (resultPanel.isOperatorButtonPushed()) {
-          resultPanel.setOperatorButtonPushed(false);
           resultLabel.setText(cmdName);
         } else if (displayNumber.equals("-0")) {
           resultLabel.setText("-" + cmdName);
@@ -53,5 +50,6 @@ public class NumberListener implements ActionListener {
           resultLabel.setText(displayNumber + cmdName);
         }
     }
+    resultPanel.setOperatorButtonPushed(false);
   }
 }
