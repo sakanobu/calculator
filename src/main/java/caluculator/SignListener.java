@@ -73,26 +73,26 @@ public class SignListener implements ActionListener {
       case "=":
         switch (resultPanel.getPushedOperator()) {
           case "+":
-            double plusResult =
-                Double.parseDouble(resultPanel.getBeforeNumber())
-                    + Double.parseDouble(displayNumber);
-            resultLabel.setText(String.valueOf(plusResult));
+            BigDecimal plusResult =
+                new BigDecimal(resultPanel.getBeforeNumber()).add(new BigDecimal(
+                    displayNumber));
+            resultLabel.setText(plusResult.stripTrailingZeros().toPlainString());
             resultPanel.setPushedOperator("");
             pushedOperatorLabel.setText("");
             break;
           case "-":
-            double minusResult =
-                Double.parseDouble(resultPanel.getBeforeNumber())
-                    - Double.parseDouble(displayNumber);
-            resultLabel.setText(String.valueOf(minusResult));
+            BigDecimal minusResult =
+                new BigDecimal(resultPanel.getBeforeNumber()).subtract(new BigDecimal(
+                    displayNumber));
+            resultLabel.setText(minusResult.stripTrailingZeros().toPlainString());
             resultPanel.setPushedOperator("");
             pushedOperatorLabel.setText("");
             break;
           case "×":
-            double multiplyResult =
-                Double.parseDouble(resultPanel.getBeforeNumber())
-                    * Double.parseDouble(displayNumber);
-            resultLabel.setText(String.valueOf(multiplyResult));
+            BigDecimal multiplyResult =
+                new BigDecimal(resultPanel.getBeforeNumber()).multiply(new BigDecimal(
+                    displayNumber));
+            resultLabel.setText(multiplyResult.stripTrailingZeros().toPlainString());
             resultPanel.setPushedOperator("");
             pushedOperatorLabel.setText("");
             break;
