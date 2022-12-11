@@ -23,10 +23,15 @@ public class SignListener implements ActionListener {
     String cmdName = e.getActionCommand();
 
     switch (cmdName) {
+      case "AC":
+        resultLabel.setText("0");
+        resultPanel.setBeforeNumber("0");
+        resultPanel.setPushedOperator("");
+        resultPanel.setLastOperationByOperatorPushed(false);
+        pushedOperatorLabel.setText("");
+        break;
       case "C":
         resultLabel.setText("0");
-        resultPanel.setPushedOperator("");
-        pushedOperatorLabel.setText("");
         break;
       case "→":
         // ToDo -0, -0. のケースを後ほど追加
