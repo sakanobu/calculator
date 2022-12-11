@@ -34,10 +34,11 @@ public class SignListener implements ActionListener {
         resultLabel.setText("0");
         break;
       case "→":
-        // ToDo -0, -0. のケースを後ほど追加
-        if (displayNumber.equals("0.")) {
+        if ((displayNumber.contains("-") && displayNumber.length() == 2)
+            || (displayNumber.length() == 1)) {
           resultLabel.setText("0");
-        } else {
+        } else if ((displayNumber.contains("-") && displayNumber.length() >= 3)
+            || (!displayNumber.contains("-") && displayNumber.length() >= 2)) {
           resultLabel.setText(displayNumber.substring(0, displayNumber.length() - 1));
         }
         break;
