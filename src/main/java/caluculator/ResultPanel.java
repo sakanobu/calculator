@@ -28,6 +28,7 @@ public class ResultPanel extends JPanel {
     this.lastOperationByOperatorPushed = false;
 
     resultLabel.setBounds(10, 0, 260, 30);
+    resultLabel.setHorizontalAlignment(JLabel.RIGHT);
     add(resultLabel);
     pushedOperatorLabel.setBounds(280, 0, 20, 30);
     add(pushedOperatorLabel);
