@@ -22,68 +22,34 @@ public class OperatorListener implements ActionListener {
     String displayNumber = resultLabel.getText();
     String cmdName = e.getActionCommand();
 
-    if (cmdName.equals("=") && resultPanel.isLastOperationByOperatorPushed()) {
-      try {
+    try {
+      if (cmdName.equals("=") && resultPanel.isLastOperationByOperatorPushed()) {
         resultLabel.setText(calculate());
-      } catch (ArithmeticException ex) {
-        resultLabel.setText("0除算です。ACボタンを押してください。");
-        resultPanel.setBeforeNumber("0");
-        resultPanel.setPushedOperator("");
-        resultPanel.setLastOperationByOperatorPushed(false);
-        pushedOperatorLabel.setText("");
-      } catch (NumberFormatException ex) {
-        resultLabel.setText("エラーです。ACボタンを押してください。");
-        resultPanel.setBeforeNumber("0");
-        resultPanel.setPushedOperator("");
-        resultPanel.setLastOperationByOperatorPushed(false);
-        pushedOperatorLabel.setText("");
-      }
-    } else if (cmdName.equals("=")) {
-      try {
+      } else if (cmdName.equals("=")) {
         resultLabel.setText(calculate());
-      } catch (ArithmeticException ex) {
-        resultLabel.setText("0除算です。ACボタンを押してください。");
-        resultPanel.setBeforeNumber("0");
-        resultPanel.setPushedOperator("");
-        resultPanel.setLastOperationByOperatorPushed(false);
-        pushedOperatorLabel.setText("");
-      } catch (NumberFormatException ex) {
-        resultLabel.setText("エラーです。ACボタンを押してください。");
-        resultPanel.setBeforeNumber("0");
-        resultPanel.setPushedOperator("");
-        resultPanel.setLastOperationByOperatorPushed(false);
-        pushedOperatorLabel.setText("");
-      }
-      resultPanel.setBeforeNumber(displayNumber);
-      resultPanel.setLastOperationByOperatorPushed(true);
-    } else if (!resultPanel.getPushedOperator().equals("")
-        && !resultPanel.isLastOperationByOperatorPushed()) {
-      try {
+        resultPanel.setBeforeNumber(displayNumber);
+        resultPanel.setLastOperationByOperatorPushed(true);
+      } else if (!resultPanel.getPushedOperator().equals("")
+          && !resultPanel.isLastOperationByOperatorPushed()) {
         resultLabel.setText(calculate());
-      } catch (ArithmeticException ex) {
-        resultLabel.setText("0除算です。ACボタンを押してください。");
-        resultPanel.setBeforeNumber("0");
-        resultPanel.setPushedOperator("");
-        resultPanel.setLastOperationByOperatorPushed(false);
-        pushedOperatorLabel.setText("");
-      } catch (NumberFormatException ex) {
-        resultLabel.setText("エラーです。ACボタンを押してください。");
-        resultPanel.setBeforeNumber("0");
-        resultPanel.setPushedOperator("");
-        resultPanel.setLastOperationByOperatorPushed(false);
-        pushedOperatorLabel.setText("");
+        resultPanel.setBeforeNumber(resultLabel.getText());
+        resultPanel.setPushedOperator(cmdName);
+        resultPanel.setLastOperationByOperatorPushed(true);
+        pushedOperatorLabel.setText(resultPanel.getPushedOperator());
+      } else if (cmdName.matches("[+-×÷]")) {
+        resultPanel.setBeforeNumber(displayNumber);
+        resultPanel.setPushedOperator(cmdName);
+        resultPanel.setLastOperationByOperatorPushed(true);
+        pushedOperatorLabel.setText(resultPanel.getPushedOperator());
+      } else {
+        resultLabel.setText("到達するはずのない条件節まで来ています。");
       }
-      resultPanel.setBeforeNumber(resultLabel.getText());
-      resultPanel.setPushedOperator(cmdName);
-      resultPanel.setLastOperationByOperatorPushed(true);
-      pushedOperatorLabel.setText(resultPanel.getPushedOperator());
-    } else if (cmdName.matches("[+-×÷]")) {
-      resultPanel.setBeforeNumber(displayNumber);
-      resultPanel.setPushedOperator(cmdName);
-      resultPanel.setLastOperationByOperatorPushed(true);
-      pushedOperatorLabel.setText(resultPanel.getPushedOperator());
-    } else {
-      resultLabel.setText("到達するはずのない条件節まで来ています。");
+    } catch (ArithmeticException ex) {
+      resultLabel.setText("0除算です。ACボタンを押してください。");
+      resultPanel.setBeforeNumber("0");
+      resultPanel.setPushedOperator("");
+      resultPanel.setLastOperationByOperatorPushed(false);
+      pushedOperatorLabel.setText("");
     }
   }
 

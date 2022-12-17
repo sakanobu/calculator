@@ -7,16 +7,27 @@ import javax.swing.JLabel;
 public class NumberListener implements ActionListener {
   ResultPanel resultPanel;
   JLabel resultLabel;
+  JLabel pushedOperatorLabel;
 
   NumberListener(ResultPanel resultPanel) {
     this.resultPanel = resultPanel;
     this.resultLabel = resultPanel.getResultLabel();
+    this.pushedOperatorLabel = resultPanel.getPushedOperatorLabel();
   }
 
   @Override
   public void actionPerformed(ActionEvent e) {
     String displayNumber = resultLabel.getText();
     String cmdName = e.getActionCommand();
+
+    if (displayNumber.contains("0除算")) {
+      resultLabel.setText("0");
+      resultPanel.setBeforeNumber("0");
+      resultPanel.setPushedOperator("");
+      resultPanel.setLastOperationByOperatorPushed(false);
+      pushedOperatorLabel.setText("");
+      return;
+    }
 
     switch (cmdName) {
       case ".":
