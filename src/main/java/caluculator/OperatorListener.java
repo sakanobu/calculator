@@ -26,7 +26,13 @@ public class OperatorListener implements ActionListener {
       try {
         resultLabel.setText(calculate());
       } catch (ArithmeticException ex) {
-        resultLabel.setText("①、0除算です。ACボタンを押してください。");
+        resultLabel.setText("0除算です。ACボタンを押してください。");
+        resultPanel.setBeforeNumber("0");
+        resultPanel.setPushedOperator("");
+        resultPanel.setLastOperationByOperatorPushed(false);
+        pushedOperatorLabel.setText("");
+      } catch (NumberFormatException ex) {
+        resultLabel.setText("エラーです。ACボタンを押してください。");
         resultPanel.setBeforeNumber("0");
         resultPanel.setPushedOperator("");
         resultPanel.setLastOperationByOperatorPushed(false);
@@ -36,7 +42,13 @@ public class OperatorListener implements ActionListener {
       try {
         resultLabel.setText(calculate());
       } catch (ArithmeticException ex) {
-        resultLabel.setText("②、0除算です。ACボタンを押してください。");
+        resultLabel.setText("0除算です。ACボタンを押してください。");
+        resultPanel.setBeforeNumber("0");
+        resultPanel.setPushedOperator("");
+        resultPanel.setLastOperationByOperatorPushed(false);
+        pushedOperatorLabel.setText("");
+      } catch (NumberFormatException ex) {
+        resultLabel.setText("エラーです。ACボタンを押してください。");
         resultPanel.setBeforeNumber("0");
         resultPanel.setPushedOperator("");
         resultPanel.setLastOperationByOperatorPushed(false);
@@ -49,7 +61,13 @@ public class OperatorListener implements ActionListener {
       try {
         resultLabel.setText(calculate());
       } catch (ArithmeticException ex) {
-        resultLabel.setText("③、0除算です。ACボタンを押してください。");
+        resultLabel.setText("0除算です。ACボタンを押してください。");
+        resultPanel.setBeforeNumber("0");
+        resultPanel.setPushedOperator("");
+        resultPanel.setLastOperationByOperatorPushed(false);
+        pushedOperatorLabel.setText("");
+      } catch (NumberFormatException ex) {
+        resultLabel.setText("エラーです。ACボタンを押してください。");
         resultPanel.setBeforeNumber("0");
         resultPanel.setPushedOperator("");
         resultPanel.setLastOperationByOperatorPushed(false);
