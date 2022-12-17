@@ -59,7 +59,7 @@ public class SignListener implements ActionListener {
         }
         break;
       case "±":
-        if (resultPanel.isLastOperationByOperatorPushed()) {
+        if (resultPanel.getLastOperationByOperatorPushed()) {
           resultLabel.setText("-0");
           resultPanel.setLastOperationByOperatorPushed(false);
         } else if (displayNumber.matches("^-.*")) {

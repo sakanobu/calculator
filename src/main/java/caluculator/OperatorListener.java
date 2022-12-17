@@ -23,14 +23,14 @@ public class OperatorListener implements ActionListener {
     String cmdName = e.getActionCommand();
 
     try {
-      if (cmdName.equals("=") && resultPanel.isLastOperationByOperatorPushed()) {
+      if (cmdName.equals("=") && resultPanel.getLastOperationByOperatorPushed()) {
         resultLabel.setText(calculate());
       } else if (cmdName.equals("=")) {
         resultLabel.setText(calculate());
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setLastOperationByOperatorPushed(true);
       } else if (!resultPanel.getPushedOperator().equals("")
-          && !resultPanel.isLastOperationByOperatorPushed()) {
+          && !resultPanel.getLastOperationByOperatorPushed()) {
         resultLabel.setText(calculate());
         resultPanel.setBeforeNumber(resultLabel.getText());
         resultPanel.setPushedOperator(cmdName);
@@ -67,7 +67,7 @@ public class OperatorListener implements ActionListener {
     BigDecimal bigDecimalResult = switch (resultPanel.getPushedOperator()) {
       case "+" -> new BigDecimal(resultPanel.getBeforeNumber()).add(new BigDecimal(displayNumber));
       case "-" -> {
-        if (resultPanel.isLastOperationByOperatorPushed()) {
+        if (resultPanel.getLastOperationByOperatorPushed()) {
           yield new BigDecimal(displayNumber).subtract(
               new BigDecimal(resultPanel.getBeforeNumber()));
         } else {
@@ -79,7 +79,7 @@ public class OperatorListener implements ActionListener {
           new BigDecimal(resultPanel.getBeforeNumber()).multiply(new BigDecimal(displayNumber));
       case "÷" -> {
         try {
-          if (resultPanel.isLastOperationByOperatorPushed()) {
+          if (resultPanel.getLastOperationByOperatorPushed()) {
             yield new BigDecimal(displayNumber).divide(
                 new BigDecimal(resultPanel.getBeforeNumber()),
                 30,
