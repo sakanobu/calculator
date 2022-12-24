@@ -29,25 +29,23 @@ public class OperatorListener implements ActionListener {
         resultLabel.setText(calculate());
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setLastOperationByOperatorPushed(true);
-      } else if (!resultPanel.getOperator().equals("")
+      } else if (!operatorLabel.getText().equals("")
           && !resultPanel.getLastOperationByOperatorPushed()) {
         resultLabel.setText(calculate());
         resultPanel.setBeforeNumber(resultLabel.getText());
-        resultPanel.setOperator(cmdName);
         resultPanel.setLastOperationByOperatorPushed(true);
-        operatorLabel.setText(resultPanel.getOperator());
+        resultPanel.setLastOperationByOperatorPushed(true);
+        operatorLabel.setText(cmdName);
       } else if (cmdName.matches("[+-×÷]")) {
         resultPanel.setBeforeNumber(displayNumber);
-        resultPanel.setOperator(cmdName);
         resultPanel.setLastOperationByOperatorPushed(true);
-        operatorLabel.setText(resultPanel.getOperator());
+        operatorLabel.setText(cmdName);
       } else {
         resultLabel.setText("到達するはずのない条件節まで来ています。");
       }
     } catch (ArithmeticException ex) {
       resultLabel.setText("0除算です。ACボタンを押してください。");
       resultPanel.setBeforeNumber("0");
-      resultPanel.setOperator("");
       resultPanel.setLastOperationByOperatorPushed(false);
       operatorLabel.setText("");
     }
@@ -60,11 +58,11 @@ public class OperatorListener implements ActionListener {
       return displayNumber;
     }
 
-    if (resultPanel.getOperator().equals("")) {
+    if (operatorLabel.getText().equals("")) {
       return displayNumber;
     }
 
-    BigDecimal bigDecimalResult = switch (resultPanel.getOperator()) {
+    BigDecimal bigDecimalResult = switch (operatorLabel.getText()) {
       case "+" -> new BigDecimal(resultPanel.getBeforeNumber()).add(new BigDecimal(displayNumber));
       case "-" -> {
         if (resultPanel.getLastOperationByOperatorPushed()) {

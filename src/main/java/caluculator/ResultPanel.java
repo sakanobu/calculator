@@ -9,7 +9,6 @@ public class ResultPanel extends JPanel {
   JLabel resultLabel;
   JLabel operatorLabel;
   String beforeNumber;
-  String operator;
   boolean lastOperationByOperatorPushed;
 
   ResultPanel() {
@@ -22,7 +21,6 @@ public class ResultPanel extends JPanel {
     resultLabel = new JLabel("0");
     operatorLabel = new JLabel("");
     this.beforeNumber = "";
-    this.operator = "";
     this.lastOperationByOperatorPushed = false;
 
     resultLabel.setBounds(10, 0, 260, 30);
@@ -46,14 +44,6 @@ public class ResultPanel extends JPanel {
 
   public void setBeforeNumber(String beforeNumber) {
     this.beforeNumber = beforeNumber;
-  }
-
-  public String getOperator() {
-    return operator;
-  }
-
-  public void setOperator(String operator) {
-    this.operator = operator;
   }
 
   public boolean getLastOperationByOperatorPushed() {
