@@ -67,7 +67,7 @@ public class SignListener implements ActionListener {
         }
         break;
       default:
-        resultLabel.setText("SignListenerのswitch文でdefault節まで到達しました。");
+        throw new Error("到達するはずのないdefault節まで来ています。");
     }
   }
 }

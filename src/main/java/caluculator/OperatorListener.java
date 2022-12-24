@@ -41,7 +41,7 @@ public class OperatorListener implements ActionListener {
         resultPanel.setLastOperationByOperatorPushed(true);
         operatorLabel.setText(cmdName);
       } else {
-        resultLabel.setText("到達するはずのない条件節まで来ています。");
+        throw new Error("到達するはずのない条件節まで来ています。");
       }
     } catch (ArithmeticException ex) {
       resultLabel.setText("0除算です。ACボタンを押してください。");
@@ -92,8 +92,7 @@ public class OperatorListener implements ActionListener {
           throw new ArithmeticException("0除算");
         }
       }
-      default -> new BigDecimal(
-          "9999999999999999999999999999999999999999999999999999999999999999999999");
+      default -> throw new Error("到達するはずのないdefault節まで来ています。");
     };
     return bigDecimalResult.stripTrailingZeros().toPlainString();
   }
