@@ -48,7 +48,7 @@ public class ResultPanel extends JPanel {
     this.beforeNumber = beforeNumber;
   }
 
-  public String getPushedOperator() {
+  public String getOperator() {
     return operator;
   }
 

@@ -29,18 +29,18 @@ public class OperatorListener implements ActionListener {
         resultLabel.setText(calculate());
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setLastOperationByOperatorPushed(true);
-      } else if (!resultPanel.getPushedOperator().equals("")
+      } else if (!resultPanel.getOperator().equals("")
           && !resultPanel.getLastOperationByOperatorPushed()) {
         resultLabel.setText(calculate());
         resultPanel.setBeforeNumber(resultLabel.getText());
         resultPanel.setPushedOperator(cmdName);
         resultPanel.setLastOperationByOperatorPushed(true);
-        pushedOperatorLabel.setText(resultPanel.getPushedOperator());
+        pushedOperatorLabel.setText(resultPanel.getOperator());
       } else if (cmdName.matches("[+-×÷]")) {
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setPushedOperator(cmdName);
         resultPanel.setLastOperationByOperatorPushed(true);
-        pushedOperatorLabel.setText(resultPanel.getPushedOperator());
+        pushedOperatorLabel.setText(resultPanel.getOperator());
       } else {
         resultLabel.setText("到達するはずのない条件節まで来ています。");
       }
@@ -60,11 +60,11 @@ public class OperatorListener implements ActionListener {
       return displayNumber;
     }
 
-    if (resultPanel.getPushedOperator().equals("")) {
+    if (resultPanel.getOperator().equals("")) {
       return displayNumber;
     }
 
-    BigDecimal bigDecimalResult = switch (resultPanel.getPushedOperator()) {
+    BigDecimal bigDecimalResult = switch (resultPanel.getOperator()) {
       case "+" -> new BigDecimal(resultPanel.getBeforeNumber()).add(new BigDecimal(displayNumber));
       case "-" -> {
         if (resultPanel.getLastOperationByOperatorPushed()) {
