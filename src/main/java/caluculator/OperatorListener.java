@@ -9,12 +9,12 @@ import javax.swing.JLabel;
 public class OperatorListener implements ActionListener {
   ResultPanel resultPanel;
   JLabel resultLabel;
-  JLabel pushedOperatorLabel;
+  JLabel operatorLabel;
 
   OperatorListener(ResultPanel resultPanel) {
     this.resultPanel = resultPanel;
     this.resultLabel = resultPanel.getResultLabel();
-    this.pushedOperatorLabel = resultPanel.getPushedOperatorLabel();
+    this.operatorLabel = resultPanel.getOperatorLabel();
   }
 
   @Override
@@ -35,12 +35,12 @@ public class OperatorListener implements ActionListener {
         resultPanel.setBeforeNumber(resultLabel.getText());
         resultPanel.setOperator(cmdName);
         resultPanel.setLastOperationByOperatorPushed(true);
-        pushedOperatorLabel.setText(resultPanel.getOperator());
+        operatorLabel.setText(resultPanel.getOperator());
       } else if (cmdName.matches("[+-×÷]")) {
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setOperator(cmdName);
         resultPanel.setLastOperationByOperatorPushed(true);
-        pushedOperatorLabel.setText(resultPanel.getOperator());
+        operatorLabel.setText(resultPanel.getOperator());
       } else {
         resultLabel.setText("到達するはずのない条件節まで来ています。");
       }
@@ -49,7 +49,7 @@ public class OperatorListener implements ActionListener {
       resultPanel.setBeforeNumber("0");
       resultPanel.setOperator("");
       resultPanel.setLastOperationByOperatorPushed(false);
-      pushedOperatorLabel.setText("");
+      operatorLabel.setText("");
     }
   }
 

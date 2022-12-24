@@ -7,12 +7,12 @@ import javax.swing.JLabel;
 public class NumberListener implements ActionListener {
   ResultPanel resultPanel;
   JLabel resultLabel;
-  JLabel pushedOperatorLabel;
+  JLabel operatorLabel;
 
   NumberListener(ResultPanel resultPanel) {
     this.resultPanel = resultPanel;
     this.resultLabel = resultPanel.getResultLabel();
-    this.pushedOperatorLabel = resultPanel.getPushedOperatorLabel();
+    this.operatorLabel = resultPanel.getOperatorLabel();
   }
 
   @Override
@@ -25,7 +25,7 @@ public class NumberListener implements ActionListener {
       resultPanel.setBeforeNumber("0");
       resultPanel.setOperator("");
       resultPanel.setLastOperationByOperatorPushed(false);
-      pushedOperatorLabel.setText("");
+      operatorLabel.setText("");
       return;
     }
 

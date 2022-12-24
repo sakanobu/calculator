@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 public class ResultPanel extends JPanel {
   JLabel resultLabel;
-  JLabel pushedOperatorLabel;
+  JLabel operatorLabel;
   String beforeNumber;
   String operator;
   boolean lastOperationByOperatorPushed;
@@ -20,7 +20,7 @@ public class ResultPanel extends JPanel {
     setBackground(Color.WHITE);
 
     resultLabel = new JLabel("0");
-    pushedOperatorLabel = new JLabel("");
+    operatorLabel = new JLabel("");
     this.beforeNumber = "";
     this.operator = "";
     this.lastOperationByOperatorPushed = false;
@@ -28,16 +28,16 @@ public class ResultPanel extends JPanel {
     resultLabel.setBounds(10, 0, 260, 30);
     resultLabel.setHorizontalAlignment(JLabel.RIGHT);
     add(resultLabel);
-    pushedOperatorLabel.setBounds(280, 0, 20, 30);
-    add(pushedOperatorLabel);
+    operatorLabel.setBounds(280, 0, 20, 30);
+    add(operatorLabel);
   }
 
   public JLabel getResultLabel() {
     return resultLabel;
   }
 
-  public JLabel getPushedOperatorLabel() {
-    return pushedOperatorLabel;
+  public JLabel getOperatorLabel() {
+    return operatorLabel;
   }
 
   public String getBeforeNumber() {
