@@ -52,8 +52,8 @@ public class ResultPanel extends JPanel {
     return operator;
   }
 
-  public void setOperator(String pushedOperator) {
-    this.operator = pushedOperator;
+  public void setOperator(String operator) {
+    this.operator = operator;
   }
 
   public boolean getLastOperationByOperatorPushed() {
