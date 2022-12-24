@@ -23,7 +23,7 @@ public class NumberListener implements ActionListener {
     if (displayNumber.contains("0除算")) {
       resultLabel.setText("0");
       resultPanel.setBeforeNumber("0");
-      resultPanel.setPushedOperator("");
+      resultPanel.setOperator("");
       resultPanel.setLastOperationByOperatorPushed(false);
       pushedOperatorLabel.setText("");
       return;

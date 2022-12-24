@@ -52,7 +52,7 @@ public class ResultPanel extends JPanel {
     return operator;
   }
 
-  public void setPushedOperator(String pushedOperator) {
+  public void setOperator(String pushedOperator) {
     this.operator = pushedOperator;
   }
 

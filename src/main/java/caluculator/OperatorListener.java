@@ -33,12 +33,12 @@ public class OperatorListener implements ActionListener {
           && !resultPanel.getLastOperationByOperatorPushed()) {
         resultLabel.setText(calculate());
         resultPanel.setBeforeNumber(resultLabel.getText());
-        resultPanel.setPushedOperator(cmdName);
+        resultPanel.setOperator(cmdName);
         resultPanel.setLastOperationByOperatorPushed(true);
         pushedOperatorLabel.setText(resultPanel.getOperator());
       } else if (cmdName.matches("[+-×÷]")) {
         resultPanel.setBeforeNumber(displayNumber);
-        resultPanel.setPushedOperator(cmdName);
+        resultPanel.setOperator(cmdName);
         resultPanel.setLastOperationByOperatorPushed(true);
         pushedOperatorLabel.setText(resultPanel.getOperator());
       } else {
@@ -47,7 +47,7 @@ public class OperatorListener implements ActionListener {
     } catch (ArithmeticException ex) {
       resultLabel.setText("0除算です。ACボタンを押してください。");
       resultPanel.setBeforeNumber("0");
-      resultPanel.setPushedOperator("");
+      resultPanel.setOperator("");
       resultPanel.setLastOperationByOperatorPushed(false);
       pushedOperatorLabel.setText("");
     }

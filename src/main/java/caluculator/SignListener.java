@@ -24,7 +24,7 @@ public class SignListener implements ActionListener {
     if (displayNumber.contains("0除算")) {
       resultLabel.setText("0");
       resultPanel.setBeforeNumber("0");
-      resultPanel.setPushedOperator("");
+      resultPanel.setOperator("");
       resultPanel.setLastOperationByOperatorPushed(false);
       pushedOperatorLabel.setText("");
       return;
@@ -34,7 +34,7 @@ public class SignListener implements ActionListener {
       case "AC":
         resultLabel.setText("0");
         resultPanel.setBeforeNumber("0");
-        resultPanel.setPushedOperator("");
+        resultPanel.setOperator("");
         resultPanel.setLastOperationByOperatorPushed(false);
         pushedOperatorLabel.setText("");
         break;
