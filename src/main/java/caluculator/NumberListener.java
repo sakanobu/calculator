@@ -18,7 +18,6 @@ public class NumberListener implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e) {
     String displayNumber = resultLabel.getText();
-    String cmdName = e.getActionCommand();
 
     if (displayNumber.contains("0除算")) {
       resultLabel.setText("0");
@@ -28,7 +27,7 @@ public class NumberListener implements ActionListener {
       return;
     }
 
-    switch (cmdName) {
+    switch (e.getActionCommand()) {
       case ".":
         if (resultPanel.getLastOperationByOperatorPushed()) {
           resultLabel.setText("0.");
@@ -49,13 +48,13 @@ public class NumberListener implements ActionListener {
         break;
       default:
         if (resultPanel.getLastOperationByOperatorPushed()) {
-          resultLabel.setText(cmdName);
+          resultLabel.setText(e.getActionCommand());
         } else if (displayNumber.equals("-0")) {
-          resultLabel.setText("-" + cmdName);
+          resultLabel.setText("-" + e.getActionCommand());
         } else if (displayNumber.equals("0")) {
-          resultLabel.setText(cmdName);
+          resultLabel.setText(e.getActionCommand());
         } else {
-          resultLabel.setText(displayNumber + cmdName);
+          resultLabel.setText(displayNumber + e.getActionCommand());
         }
     }
     resultPanel.setLastOperationByOperatorPushed(false);

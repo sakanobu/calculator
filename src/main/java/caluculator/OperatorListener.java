@@ -20,12 +20,11 @@ public class OperatorListener implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e) {
     String displayNumber = resultLabel.getText();
-    String cmdName = e.getActionCommand();
 
     try {
-      if (cmdName.equals("=") && resultPanel.getLastOperationByOperatorPushed()) {
+      if (e.getActionCommand().equals("=") && resultPanel.getLastOperationByOperatorPushed()) {
         resultLabel.setText(calculate());
-      } else if (cmdName.equals("=")) {
+      } else if (e.getActionCommand().equals("=")) {
         resultLabel.setText(calculate());
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setLastOperationByOperatorPushed(true);
@@ -35,11 +34,11 @@ public class OperatorListener implements ActionListener {
         resultPanel.setBeforeNumber(resultLabel.getText());
         resultPanel.setLastOperationByOperatorPushed(true);
         resultPanel.setLastOperationByOperatorPushed(true);
-        operatorLabel.setText(cmdName);
-      } else if (cmdName.matches("[+-×÷]")) {
+        operatorLabel.setText(e.getActionCommand());
+      } else if (e.getActionCommand().matches("[+-×÷]")) {
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setLastOperationByOperatorPushed(true);
-        operatorLabel.setText(cmdName);
+        operatorLabel.setText(e.getActionCommand());
       } else {
         throw new Error("到達するはずのない条件節まで来ています。");
       }

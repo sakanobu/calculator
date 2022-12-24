@@ -19,7 +19,6 @@ public class SignListener implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e) {
     String displayNumber = resultLabel.getText();
-    String cmdName = e.getActionCommand();
 
     if (displayNumber.contains("0除算")) {
       resultLabel.setText("0");
@@ -29,7 +28,7 @@ public class SignListener implements ActionListener {
       return;
     }
 
-    switch (cmdName) {
+    switch (e.getActionCommand()) {
       case "AC":
         resultLabel.setText("0");
         resultPanel.setBeforeNumber("0");
