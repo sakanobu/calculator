@@ -22,22 +22,19 @@ public class OperatorListener implements ActionListener {
     String displayNumber = resultLabel.getText();
 
     try {
-      if (e.getActionCommand().equals("=") && resultPanel.getLastOperationByOperatorPushed()) {
+      if (e.getActionCommand().equals("=")) {
         if (resultLabel.getText().contains("0除算") || operatorLabel.getText().equals("")) {
           return;
         }
+
         resultLabel.setText(
             calculate(resultPanel.getBeforeNumber(), resultLabel.getText(), operatorLabel.getText(),
                 resultPanel.getLastOperationByOperatorPushed()));
-      } else if (e.getActionCommand().equals("=")) {
-        if (resultLabel.getText().contains("0除算") || operatorLabel.getText().equals("")) {
-          return;
+
+        if (!resultPanel.getLastOperationByOperatorPushed()) {
+          resultPanel.setBeforeNumber(displayNumber);
+          resultPanel.setLastOperationByOperatorPushed(true);
         }
-        resultLabel.setText(
-            calculate(resultPanel.getBeforeNumber(), resultLabel.getText(), operatorLabel.getText(),
-                resultPanel.getLastOperationByOperatorPushed()));
-        resultPanel.setBeforeNumber(displayNumber);
-        resultPanel.setLastOperationByOperatorPushed(true);
       } else if (!operatorLabel.getText().equals("")
           && !resultPanel.getLastOperationByOperatorPushed()) {
         if (resultLabel.getText().contains("0除算") || operatorLabel.getText().equals("")) {
