@@ -34,7 +34,7 @@ public class OperatorListener implements ActionListener {
         }
         return;
       }
-      if (operatorLabel.getText().matches("[+-×÷]")
+      if (e.getActionCommand().matches("[+-×÷]") && operatorLabel.getText().matches("[+-×÷]")
           && !resultPanel.getLastOperationByOperatorPushed()) {
         if (resultLabel.getText().contains("0除算") || operatorLabel.getText().equals("")) {
           return;
