@@ -4,13 +4,13 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
 
-public class Calculator extends JFrame {
+public class CalculatorFrame extends JFrame {
   ResultPanel resultPanel;
   NumberPanel numberPanel;
   SignPanel signPanel;
   OperatorPanel operatorPanel;
 
-  Calculator() {
+  CalculatorFrame() {
     setTitle("電卓");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
@@ -35,7 +35,7 @@ public class Calculator extends JFrame {
   }
 
   public static void main(String[] args) {
-    Calculator frame = new Calculator();
+    CalculatorFrame frame = new CalculatorFrame();
     frame.setVisible(true);
   }
 }
