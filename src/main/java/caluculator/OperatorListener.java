@@ -23,10 +23,16 @@ public class OperatorListener implements ActionListener {
 
     try {
       if (e.getActionCommand().equals("=") && resultPanel.getLastOperationByOperatorPushed()) {
+        if (resultLabel.getText().contains("0除算") || operatorLabel.getText().equals("")) {
+          return;
+        }
         resultLabel.setText(
             calculate(resultPanel.getBeforeNumber(), resultLabel.getText(), operatorLabel.getText(),
                 resultPanel.getLastOperationByOperatorPushed()));
       } else if (e.getActionCommand().equals("=")) {
+        if (resultLabel.getText().contains("0除算") || operatorLabel.getText().equals("")) {
+          return;
+        }
         resultLabel.setText(
             calculate(resultPanel.getBeforeNumber(), resultLabel.getText(), operatorLabel.getText(),
                 resultPanel.getLastOperationByOperatorPushed()));
@@ -34,6 +40,9 @@ public class OperatorListener implements ActionListener {
         resultPanel.setLastOperationByOperatorPushed(true);
       } else if (!operatorLabel.getText().equals("")
           && !resultPanel.getLastOperationByOperatorPushed()) {
+        if (resultLabel.getText().contains("0除算") || operatorLabel.getText().equals("")) {
+          return;
+        }
         resultLabel.setText(
             calculate(resultPanel.getBeforeNumber(), resultLabel.getText(), operatorLabel.getText(),
                 resultPanel.getLastOperationByOperatorPushed()));
@@ -58,14 +67,6 @@ public class OperatorListener implements ActionListener {
 
   String calculate(String beforeNumber, String displayNumber, String operator,
                    boolean lastOperationByOperatorPushed) {
-    if (displayNumber.contains("0除算")) {
-      return displayNumber;
-    }
-
-    if (operatorLabel.getText().equals("")) {
-      return displayNumber;
-    }
-
     BigDecimal bigDecimalResult = switch (operator) {
       case "+" -> new BigDecimal(beforeNumber).add(new BigDecimal(displayNumber));
       case "-" -> {
