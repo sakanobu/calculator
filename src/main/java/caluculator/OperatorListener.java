@@ -23,14 +23,20 @@ public class OperatorListener implements ActionListener {
 
     try {
       if (e.getActionCommand().equals("=") && resultPanel.getLastOperationByOperatorPushed()) {
-        resultLabel.setText(calculate());
+        resultLabel.setText(
+            calculate(resultPanel.getBeforeNumber(), resultLabel.getText(), operatorLabel.getText(),
+                resultPanel.getLastOperationByOperatorPushed()));
       } else if (e.getActionCommand().equals("=")) {
-        resultLabel.setText(calculate());
+        resultLabel.setText(
+            calculate(resultPanel.getBeforeNumber(), resultLabel.getText(), operatorLabel.getText(),
+                resultPanel.getLastOperationByOperatorPushed()));
         resultPanel.setBeforeNumber(displayNumber);
         resultPanel.setLastOperationByOperatorPushed(true);
       } else if (!operatorLabel.getText().equals("")
           && !resultPanel.getLastOperationByOperatorPushed()) {
-        resultLabel.setText(calculate());
+        resultLabel.setText(
+            calculate(resultPanel.getBeforeNumber(), resultLabel.getText(), operatorLabel.getText(),
+                resultPanel.getLastOperationByOperatorPushed()));
         resultPanel.setBeforeNumber(resultLabel.getText());
         resultPanel.setLastOperationByOperatorPushed(true);
         resultPanel.setLastOperationByOperatorPushed(true);
@@ -50,9 +56,8 @@ public class OperatorListener implements ActionListener {
     }
   }
 
-  String calculate() {
-    String displayNumber = resultLabel.getText();
-
+  String calculate(String beforeNumber, String displayNumber, String operator,
+                   boolean lastOperationByOperatorPushed) {
     if (displayNumber.contains("0除算")) {
       return displayNumber;
     }
@@ -61,28 +66,27 @@ public class OperatorListener implements ActionListener {
       return displayNumber;
     }
 
-    BigDecimal bigDecimalResult = switch (operatorLabel.getText()) {
-      case "+" -> new BigDecimal(resultPanel.getBeforeNumber()).add(new BigDecimal(displayNumber));
+    BigDecimal bigDecimalResult = switch (operator) {
+      case "+" -> new BigDecimal(beforeNumber).add(new BigDecimal(displayNumber));
       case "-" -> {
-        if (resultPanel.getLastOperationByOperatorPushed()) {
+        if (lastOperationByOperatorPushed) {
           yield new BigDecimal(displayNumber).subtract(
-              new BigDecimal(resultPanel.getBeforeNumber()));
+              new BigDecimal(beforeNumber));
         } else {
-          yield new BigDecimal(resultPanel.getBeforeNumber()).subtract(
+          yield new BigDecimal(beforeNumber).subtract(
               new BigDecimal(displayNumber));
         }
       }
-      case "×" ->
-          new BigDecimal(resultPanel.getBeforeNumber()).multiply(new BigDecimal(displayNumber));
+      case "×" -> new BigDecimal(beforeNumber).multiply(new BigDecimal(displayNumber));
       case "÷" -> {
         try {
-          if (resultPanel.getLastOperationByOperatorPushed()) {
+          if (lastOperationByOperatorPushed) {
             yield new BigDecimal(displayNumber).divide(
-                new BigDecimal(resultPanel.getBeforeNumber()),
+                new BigDecimal(beforeNumber),
                 30,
                 RoundingMode.HALF_UP);
           } else {
-            yield new BigDecimal(resultPanel.getBeforeNumber()).divide(
+            yield new BigDecimal(beforeNumber).divide(
                 new BigDecimal(displayNumber),
                 30,
                 RoundingMode.HALF_UP);
