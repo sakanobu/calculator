@@ -26,16 +26,16 @@ public class OperatorListener implements ActionListener {
         if (resultLabel.getText().contains("0除算") || operatorLabel.getText().equals("")) {
           return;
         }
-
         resultLabel.setText(
             calculate(resultPanel.getBeforeNumber(), resultLabel.getText(), operatorLabel.getText(),
                 resultPanel.getLastOperationByOperatorPushed()));
-
         if (!resultPanel.getLastOperationByOperatorPushed()) {
           resultPanel.setBeforeNumber(displayNumber);
           resultPanel.setLastOperationByOperatorPushed(true);
         }
-      } else if (!operatorLabel.getText().equals("")
+        return;
+      }
+      if (operatorLabel.getText().matches("[+-×÷]")
           && !resultPanel.getLastOperationByOperatorPushed()) {
         if (resultLabel.getText().contains("0除算") || operatorLabel.getText().equals("")) {
           return;
@@ -44,16 +44,11 @@ public class OperatorListener implements ActionListener {
             calculate(resultPanel.getBeforeNumber(), resultLabel.getText(), operatorLabel.getText(),
                 resultPanel.getLastOperationByOperatorPushed()));
         resultPanel.setBeforeNumber(resultLabel.getText());
-        resultPanel.setLastOperationByOperatorPushed(true);
-        resultPanel.setLastOperationByOperatorPushed(true);
-        operatorLabel.setText(e.getActionCommand());
-      } else if (e.getActionCommand().matches("[+-×÷]")) {
-        resultPanel.setBeforeNumber(displayNumber);
-        resultPanel.setLastOperationByOperatorPushed(true);
-        operatorLabel.setText(e.getActionCommand());
       } else {
-        throw new Error("到達するはずのない条件節まで来ています。");
+        resultPanel.setBeforeNumber(displayNumber);
       }
+      resultPanel.setLastOperationByOperatorPushed(true);
+      operatorLabel.setText(e.getActionCommand());
     } catch (ArithmeticException ex) {
       resultLabel.setText("0除算です。ACボタンを押してください。");
       resultPanel.setBeforeNumber("0");
