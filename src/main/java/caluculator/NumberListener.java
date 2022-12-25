@@ -17,9 +17,7 @@ public class NumberListener implements ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    String displayNumber = resultLabel.getText();
-
-    if (displayNumber.contains("0除算")) {
+    if (resultLabel.getText().contains("0除算")) {
       resultLabel.setText("0");
       resultPanel.setBeforeNumber("0");
       resultPanel.setLastOperationByOperatorPushed(false);
@@ -31,30 +29,30 @@ public class NumberListener implements ActionListener {
       case ".":
         if (resultPanel.getLastOperationByOperatorPushed()) {
           resultLabel.setText("0.");
-        } else if (displayNumber.contains(".")) {
+        } else if (resultLabel.getText().contains(".")) {
           return;
         } else {
-          resultLabel.setText(displayNumber + ".");
+          resultLabel.setText(resultLabel.getText() + ".");
         }
         break;
       case "00":
         if (resultPanel.getLastOperationByOperatorPushed()) {
           resultLabel.setText("0");
-        } else if (displayNumber.equals("0")) {
+        } else if (resultLabel.getText().equals("0")) {
           return;
         } else {
-          resultLabel.setText(displayNumber + "00");
+          resultLabel.setText(resultLabel.getText() + "00");
         }
         break;
       default:
         if (resultPanel.getLastOperationByOperatorPushed()) {
           resultLabel.setText(e.getActionCommand());
-        } else if (displayNumber.equals("-0")) {
+        } else if (resultLabel.getText().equals("-0")) {
           resultLabel.setText("-" + e.getActionCommand());
-        } else if (displayNumber.equals("0")) {
+        } else if (resultLabel.getText().equals("0")) {
           resultLabel.setText(e.getActionCommand());
         } else {
-          resultLabel.setText(displayNumber + e.getActionCommand());
+          resultLabel.setText(resultLabel.getText() + e.getActionCommand());
         }
     }
     resultPanel.setLastOperationByOperatorPushed(false);

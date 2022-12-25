@@ -18,9 +18,7 @@ public class SignListener implements ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    String displayNumber = resultLabel.getText();
-
-    if (displayNumber.contains("0除算")) {
+    if (resultLabel.getText().contains("0除算")) {
       resultLabel.setText("0");
       resultPanel.setBeforeNumber("0");
       resultPanel.setLastOperationByOperatorPushed(false);
@@ -39,19 +37,20 @@ public class SignListener implements ActionListener {
         resultLabel.setText("0");
         break;
       case "→":
-        if ((displayNumber.contains("-") && displayNumber.length() == 2)
-            || (displayNumber.length() == 1)) {
+        if ((resultLabel.getText().contains("-") && resultLabel.getText().length() == 2)
+            || (resultLabel.getText().length() == 1)) {
           resultLabel.setText("0");
-        } else if ((displayNumber.contains("-") && displayNumber.length() >= 3)
-            || (!displayNumber.contains("-") && displayNumber.length() >= 2)) {
-          resultLabel.setText(displayNumber.substring(0, displayNumber.length() - 1));
+        } else if ((resultLabel.getText().contains("-") && resultLabel.getText().length() >= 3)
+            || (!resultLabel.getText().contains("-") && resultLabel.getText().length() >= 2)) {
+          resultLabel.setText(
+              resultLabel.getText().substring(0, resultLabel.getText().length() - 1));
         }
         break;
       case "%":
-        if (new BigDecimal(displayNumber).compareTo(BigDecimal.ZERO) == 0) {
+        if (new BigDecimal(resultLabel.getText()).compareTo(BigDecimal.ZERO) == 0) {
           resultLabel.setText("0");
         } else {
-          BigDecimal percentResult = new BigDecimal(displayNumber).scaleByPowerOfTen(-2);
+          BigDecimal percentResult = new BigDecimal(resultLabel.getText()).scaleByPowerOfTen(-2);
           resultLabel.setText(percentResult.toPlainString());
         }
         break;
@@ -59,10 +58,10 @@ public class SignListener implements ActionListener {
         if (resultPanel.getLastOperationByOperatorPushed()) {
           resultLabel.setText("-0");
           resultPanel.setLastOperationByOperatorPushed(false);
-        } else if (displayNumber.matches("^-.*")) {
-          resultLabel.setText(displayNumber.substring(1));
+        } else if (resultLabel.getText().matches("^-.*")) {
+          resultLabel.setText(resultLabel.getText().substring(1));
         } else {
-          resultLabel.setText("-" + displayNumber);
+          resultLabel.setText("-" + resultLabel.getText());
         }
         break;
       default:

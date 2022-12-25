@@ -19,7 +19,7 @@ public class OperatorListener implements ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    String displayNumber = resultLabel.getText();
+    String tmpDisplayNumber = resultLabel.getText();
 
     try {
       if (e.getActionCommand().equals("=")) {
@@ -30,7 +30,7 @@ public class OperatorListener implements ActionListener {
             calculate(resultPanel.getBeforeNumber(), resultLabel.getText(), operatorLabel.getText(),
                 resultPanel.getLastOperationByOperatorPushed()));
         if (!resultPanel.getLastOperationByOperatorPushed()) {
-          resultPanel.setBeforeNumber(displayNumber);
+          resultPanel.setBeforeNumber(tmpDisplayNumber);
           resultPanel.setLastOperationByOperatorPushed(true);
         }
         return;
@@ -45,7 +45,7 @@ public class OperatorListener implements ActionListener {
                 resultPanel.getLastOperationByOperatorPushed()));
         resultPanel.setBeforeNumber(resultLabel.getText());
       } else {
-        resultPanel.setBeforeNumber(displayNumber);
+        resultPanel.setBeforeNumber(tmpDisplayNumber);
       }
       resultPanel.setLastOperationByOperatorPushed(true);
       operatorLabel.setText(e.getActionCommand());
